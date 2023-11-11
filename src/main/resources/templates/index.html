@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    <link rel="stylesheet" th:href="@{/css/index.css}"/>
+</head>
+<body>
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="logout">
+</form>
+<h1>Index page</h1>
+<h1 sec:authentication="name"></h1>
+<div sec:authorize="hasAnyRole('ADMIN')">
+    <h1>Thong tin chi hien thi cho admin</h1>
+</div>
+<div sec:authorize="isAuthenticated()">
+    <h1>Thong tin chi hien thi sau khi đăng nhập</h1>
+</div>
+</body>
+</html>
